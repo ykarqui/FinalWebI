@@ -4,7 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class BarrioDAO {
-
+    
+    
+    public void obtenerBarrioDAO(String barrio){
+        
+    }
+    
     /*
     public void guardarB() throws Exception {
         Connection c = GCon.getInstance().getConnection();

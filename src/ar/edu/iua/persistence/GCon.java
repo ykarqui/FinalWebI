@@ -12,7 +12,7 @@ public class GCon {
 
 	private GCon() throws ClassNotFoundException, SQLException { // Constructor privado
 		Class.forName("com.mysql.jdbc.Driver");
-		c = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "giuli0406");
+		c = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "karqui");
         }
 
 	public static GCon getInstance() throws ClassNotFoundException, SQLException {

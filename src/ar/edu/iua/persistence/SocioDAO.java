@@ -1,5 +1,7 @@
 package ar.edu.iua.persistence;
 
+import ar.edu.iua.bo.SocioBO;
+import ar.edu.iua.model.Direccion;
 import ar.edu.iua.model.Socio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SocioDAO {
+    SocioBO sbo = new SocioBO();
+    Socio socio = new Socio();
 
     /*
      public void guardarS() throws Exception {
@@ -30,7 +34,7 @@ public class SocioDAO {
      */
     public void buscarS(Socio s) throws Exception {
 
-        System.out.println("Llego a DAO.");
+        System.out.println("DAO:"+s.getIdSocio());
 
         Connection c = GCon.getInstance().getConnection();
         PreparedStatement buscar = c.prepareStatement("SELECT * FROM Socio WHERE idSocio=?");
@@ -52,7 +56,15 @@ public class SocioDAO {
         } catch (Exception e) {
             System.out.println("Error en Persistencia");
         }
-
+        socio.setIdSocio(rs.getInt(1));
+        socio.setSocio(rs.getString(2));
+        socio.setTelefono(rs.getString(3));
+        socio.setMail(rs.getString(4));
+        socio.setDni(rs.getInt(5));
+        Direccion d = new Direccion();
+        d.setIdDireccion(rs.getInt(6));
+        socio.setIdDireccion(d);
+        sbo.devolverSocioBO(socio);
     }
 
     
@@ -95,7 +107,7 @@ public class SocioDAO {
         }
     }
      */
- /*
+ 
     public ResultSet buscarSocios() throws ClassNotFoundException, SQLException {
         Connection c = GCon.getInstance().getConnection();
         PreparedStatement stm = c.prepareStatement("SELECT * FROM Socio ORDER BY Socio");
@@ -114,5 +126,5 @@ public class SocioDAO {
         }
         return rs;
     }
-     */
+     
 }

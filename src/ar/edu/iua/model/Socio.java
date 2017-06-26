@@ -10,6 +10,27 @@ public class Socio {
     private Integer dni;
     private Direccion idDireccion;
 
+    public Socio() {
+    }
+
+    public Socio(String socio, String telefono, String mail, Integer dni) {
+        this.socio = socio;
+        this.telefono = telefono;
+        this.mail = mail;
+        this.dni = dni;
+    }
+
+    public Socio(Integer idSocio, String socio, String telefono, String mail, Integer dni, Direccion idDireccion) {
+        this.idSocio = idSocio;
+        this.socio = socio;
+        this.telefono = telefono;
+        this.mail = mail;
+        this.dni = dni;
+        this.idDireccion = idDireccion;
+    }
+    
+    
+
     public Integer getIdSocio() {
         return idSocio;
     }

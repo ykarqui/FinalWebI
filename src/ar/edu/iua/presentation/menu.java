@@ -5,6 +5,8 @@
  */
 package ar.edu.iua.presentation;
 
+import ar.edu.iua.persistence.SocioDAO;
+
 /**
  *
  * @author Giuliano
@@ -35,7 +37,7 @@ public class menu extends javax.swing.JFrame {
         modificarS = new javax.swing.JMenuItem();
         eliminarSocio = new javax.swing.JMenuItem();
         buscarSocio = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        btnTraerSocios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         cargarReserva = new javax.swing.JMenuItem();
         modificarReserva = new javax.swing.JMenuItem();
@@ -66,12 +68,12 @@ public class menu extends javax.swing.JFrame {
         escritorio.setBackground(new java.awt.Color(153, 153, 153));
         escritorio.setForeground(new java.awt.Color(144, 82, 82));
         escritorio.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 escritorioAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -115,8 +117,8 @@ public class menu extends javax.swing.JFrame {
         });
         Socio.add(buscarSocio);
 
-        jMenuItem6.setText("Mostrar");
-        Socio.add(jMenuItem6);
+        btnTraerSocios.setText("Mostrar");
+        Socio.add(btnTraerSocios);
 
         jMenuBar1.add(Socio);
 
@@ -244,6 +246,13 @@ public class menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mostrarSActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here: 
+        mostrarSocios ss = new mostrarSocios();
+        escritorio.add(ss);
+        ss.show();
+    }  
+    
     private void cargarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarSActionPerformed
         // TODO add your handling code here: 
         cargarSocio cs = new cargarSocio();
@@ -279,6 +288,13 @@ public class menu extends javax.swing.JFrame {
         buscarSocio bs = new buscarSocio();
         escritorio.add(bs);
         bs.show();
+        SocioDAO sdao = new SocioDAO();
+        try{
+        sdao.buscarSocios();
+        }catch(Exception e){
+            System.out.println("chau gg");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buscarSocioActionPerformed
 
     private void escritorioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_escritorioAncestorAdded
@@ -350,6 +366,7 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Socio;
+    private javax.swing.JMenuItem btnTraerSocios;
     private javax.swing.JMenuItem buscarReserva;
     private javax.swing.JMenuItem buscarSocio;
     private javax.swing.JMenuItem cargarReserva;
@@ -369,7 +386,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

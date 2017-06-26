@@ -10,6 +10,35 @@ public class Direccion {
     private String departamento;
     private Barrio idBarrio;
 
+    public Direccion() {
+    }
+
+    public Direccion(String calle, Integer numero, Integer piso, String departamento) {
+        this.calle = calle;
+        this.numero = numero;
+        this.piso = piso;
+        this.departamento = departamento;
+    }
+
+    public Direccion(String calle, Integer numero, Integer piso, String departamento, Barrio idBarrio) {
+        this.calle = calle;
+        this.numero = numero;
+        this.piso = piso;
+        this.departamento = departamento;
+        this.idBarrio = idBarrio;
+    }
+
+    public Direccion(Integer idDireccion, String calle, Integer numero, Integer piso, String departamento, Barrio idBarrio) {
+        this.idDireccion = idDireccion;
+        this.calle = calle;
+        this.numero = numero;
+        this.piso = piso;
+        this.departamento = departamento;
+        this.idBarrio = idBarrio;
+    }
+    
+    
+
     public Integer getIdDireccion() {
         return idDireccion;
     }
