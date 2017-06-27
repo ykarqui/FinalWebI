@@ -1,13 +1,40 @@
 package ar.edu.iua.persistence;
 
+import ar.edu.iua.bo.BarrioBO;
+import ar.edu.iua.model.Barrio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class BarrioDAO {
     
     
-    public void obtenerBarrioDAO(String barrio){
+    public void obtenerBarrioDAO(Barrio barrio) throws Exception {
+        Connection c = GCon.getInstance().getConnection();
+        PreparedStatement buscar = c.prepareStatement("SELECT * FROM Barrio WHERE Barrio=?");
         
+        buscar.setString(1, barrio.getBarrio());
+
+        ResultSet rs = buscar.executeQuery();
+
+        try {
+            while (rs.next()) {
+                System.out.println(rs.getInt(1));
+                System.out.println(rs.getString(2));
+                System.out.println(rs.getInt(3));
+            }
+           
+        } catch (Exception e) {
+            System.out.println("Error en Persistencia");
+        }
+        
+        barrio.setIdBarrio(rs.getInt(1));
+        barrio.setBarrio(rs.getString(2));
+        barrio.setCP(rs.getInt(3));
+        
+        BarrioBO bbo = new BarrioBO();
+        bbo.devolverIdB(barrio);
     }
     
     /*

@@ -5,6 +5,7 @@ public class Barrio {
     Integer idBarrio;
     String Barrio;
     Integer CP;
+    
 
     public Integer getIdBarrio() {
         return idBarrio;

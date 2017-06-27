@@ -6,6 +6,7 @@
 package ar.edu.iua.presentation;
 
 import ar.edu.iua.bo.BarrioBO;
+import ar.edu.iua.model.Barrio;
 /**
  *
  * @author giuliano
@@ -33,9 +34,20 @@ public class cargarSocio extends javax.swing.JInternalFrame {
         
         String barrio = txtBarrio.getActionCommand();
         
-        //obtenerIdBarrioBO(barrio);
+        Barrio b = new Barrio();
+        b.setBarrio(barrio);
+        BarrioBO bbo = new BarrioBO();
+        try{
+        bbo.obtenerIdBarrioBO(b);
+        }catch(Exception e){
+            
+        }
         
-        
+    }
+    
+    public void devolverIdBP(Barrio b){
+        System.out.println("idBarrio: "+b.getIdBarrio());
+        System.out.println("Barrio: "+b.getBarrio());
     }
 
     /**
@@ -55,7 +67,7 @@ public class cargarSocio extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtSocio = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
@@ -102,8 +114,13 @@ public class cargarSocio extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel7.setText("Calle");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardarP.jpg"))); // NOI18N
-        jButton1.setText("Guardar");
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardarP.jpg"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancelarP.jpg"))); // NOI18N
         jButton2.setText("Cancelar");
@@ -148,7 +165,7 @@ public class cargarSocio extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel10.setText("Barrio");
 
-        txtBarrio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtBarrio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nueva Cordoba", "Alberdi", "Balcarce", "Avellaneda", "Mendiolaza" }));
 
         jButton3.setText("Cargar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +194,7 @@ public class cargarSocio extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -265,7 +282,7 @@ public class cargarSocio extends javax.swing.JInternalFrame {
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnGuardar)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
@@ -296,9 +313,14 @@ public class cargarSocio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPisoActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        cargarSocioP();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
